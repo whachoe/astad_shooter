@@ -11,10 +11,9 @@ var AEnemy = enchant.Class.create(enchant.Sprite, {
             }
         });
 
-        game.currentScene.addChild(this);     // add to canvas
+        game.enemiesOnScreen.addChild(this);     // add to canvas
     },
     remove: function () {
-        game.currentScene.removeChild(this);
-        delete game.enemiesOnScreen[this.key];
+        game.enemiesOnScreen.removeChild(this);
     }
 });

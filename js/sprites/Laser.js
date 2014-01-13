@@ -12,14 +12,15 @@ var Laser = enchant.Class.create(enchant.Sprite, {
                 this.remove();
             }
 
-            for (var i in game.enemiesOnScreen) {
+            for (var i in game.enemiesOnScreen.childNodes) {
+                var enemy = game.enemiesOnScreen.childNodes[i];
                 // We got a hit!
-                if(game.enemiesOnScreen[i].intersect(this)) {
-                    if (game.enemiesOnScreen[i] instanceof UEnemy) {
+                if(enemy.intersect(this)) {
+                    if (enemy instanceof UEnemy) {
                         new Explosion(this.x, this.y);
                         game.score += 100;
-                        game.enemiesOnScreen[i].remove();
-                    } else if (game.enemiesOnScreen[i] instanceof AEnemy) {
+                        game.enemiesOnScreen.removeChild(enemy);
+                    } else if (enemy instanceof AEnemy) {
                         // This one just eats our bullets: A is Strong!
                     }
 

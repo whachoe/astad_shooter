@@ -4,7 +4,7 @@ var Level1Scene = enchant.Class.create(enchant.Scene, {
         // 1 - Call superclass constructor
         Scene.apply(this);
 
-        game.enemiesOnScreen = Array();
+        game.enemiesOnScreen = new enchant.Group();
         game.score = 0;
 
         // Initialize our ship
@@ -22,15 +22,16 @@ var Level1Scene = enchant.Class.create(enchant.Scene, {
         // generate enemy every 120 frames
         this.tl.then(function() {
             var enemy = new AEnemy();
-            enemy.key = game.enemiesOnScreen.push(enemy) - 1;
+            game.enemiesOnScreen.addChild(enemy);
         }).delay(120).loop();
 
         // generate enemy every 30 frames
         this.tl.then(function() {
             var enemy = new UEnemy();
-            enemy.key = game.enemiesOnScreen.push(enemy) - 1;
+            game.enemiesOnScreen.addChild(enemy);
         }).delay(15).loop();
 
+        this.addChild(game.enemiesOnScreen);
 
         // Setup our keyboard listeners
         this.on(enchant.Event.A_BUTTON_DOWN, function(){

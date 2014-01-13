@@ -39,12 +39,13 @@ var Ship = enchant.Class.create(enchant.Sprite, {
             }
 
             // Check if we're crashing with an enemy
-            for (var i in game.enemiesOnScreen) {
+            for (var i in game.enemiesOnScreen.childNodes) {
                 // We got hit!
-                if(game.enemiesOnScreen[i].intersect(this)) {
+                var enemy = game.enemiesOnScreen.childNodes[i];
+                if(enemy.intersect(this)) {
                     new Explosion(this.x, this.y);
                     this.remove();
-                    game.enemiesOnScreen[i].remove();
+                    game.enemiesOnScreen.removeChild(enemy);
 
                     // Game over
                     var gameoverscene = new GameOverScene();
