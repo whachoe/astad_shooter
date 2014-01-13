@@ -34,5 +34,6 @@ window.onload = function() {
     };
 
     game.start(); //Begin the game
+    window.scrollTo(0, 0);
 }
 
