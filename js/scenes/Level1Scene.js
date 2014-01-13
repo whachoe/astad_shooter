@@ -1,14 +1,11 @@
 var Level1Scene = enchant.Class.create(enchant.Scene, {
     // The main gameplay scene.
     initialize: function() {
-        //var game;
-
         // 1 - Call superclass constructor
         Scene.apply(this);
 
-        // 2 - Access to the game singleton instance
-        // game = Game.instance;
         game.enemiesOnScreen = Array();
+        game.score = 0;
 
         // Initialize our ship
         game.ship = new Ship();

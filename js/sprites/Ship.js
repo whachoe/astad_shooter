@@ -47,7 +47,7 @@ var Ship = enchant.Class.create(enchant.Sprite, {
                     game.enemiesOnScreen[i].remove();
 
                     // Game over
-                    var gameoverscene = new gameoverScene();
+                    var gameoverscene = new GameOverScene();
                     game.replaceScene(gameoverscene);
                 }
             }

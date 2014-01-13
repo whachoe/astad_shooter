@@ -1,4 +1,4 @@
-var gameoverScene = enchant.Class.create(enchant.Scene, {
+var GameOverScene = enchant.Class.create(enchant.Scene, {
     // The main gameplay scene.
     initialize: function() {
         // 1 - Call superclass constructor
@@ -9,10 +9,16 @@ var gameoverScene = enchant.Class.create(enchant.Scene, {
         gameoverimg.x = 85;
         gameoverimg.y = 95;
 
+        // ScoreLabel
+        var scoreLabel = new ScoreLabel(10, 10);
+        scoreLabel.score = game.score;
+        this.addChild(scoreLabel);
+
         // On click: Start the game
-        var titlescene = new titleScene();
+        var titlescene = new TitleScene();
         gameoverimg.on("touchstart", function (){
             game.replaceScene(titlescene);
+            game.assets['sounds/johnson-long-version.mp3'].stop();
         });
         this.addChild(gameoverimg);
 

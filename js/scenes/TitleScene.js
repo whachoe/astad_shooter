@@ -1,4 +1,4 @@
-var titleScene = enchant.Class.create(enchant.Scene, {
+var TitleScene = enchant.Class.create(enchant.Scene, {
     // The main gameplay scene.
     initialize: function() {
         // 1 - Call superclass constructor

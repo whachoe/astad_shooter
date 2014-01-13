@@ -29,7 +29,7 @@ window.onload = function() {
 
     game.onload = function() {
         // Load the title screen
-        var titlescreen = new titleScene();
+        var titlescreen = new TitleScene();
         game.pushScene(titlescreen);
     };
 
