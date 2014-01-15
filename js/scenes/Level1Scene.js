@@ -8,11 +8,11 @@ var Level1Scene = enchant.Class.create(enchant.Scene, {
         game.score = 0;
         game.amountOfEnemies = 8000; // with time, decrease this amount slowly so more enemies will appear
 
-        // DGame pad
-        var pad = new Pad();
-        pad.x = 0;
-        pad.y = 220;
-        game.rootScene.addChild(pad);
+        // DGame pad : not working
+//        var pad = new Pad();
+//        pad.x = 0;
+//        pad.y = 220;
+//        this.addChild(pad);
 
         // ScoreLabel
         var scoreLabel = new ScoreLabel(10, 10);
