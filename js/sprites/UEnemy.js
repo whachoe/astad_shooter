@@ -3,7 +3,8 @@ var UEnemy = enchant.Class.create(enchant.Sprite, {
         enchant.Sprite.call(this, 28, 28);
         var imagename = possibleEnemies[Math.floor(Math.random() * possibleEnemies.length)];
         this.image = game.assets[imagename]; // set image
-        this.moveTo(Math.min(284, Math.floor((Math.random() * 288) + 32)), 16);
+        var orig_x = Math.min(284, Math.floor((Math.random() * 288) + 32));
+        this.moveTo(orig_x, 16);
 
         if (imagename == 'img/avatars/michael.jpg') {
             this.tl.rotateBy(720, 300, enchant.Easing.QUINT_EASEOUT);
@@ -11,7 +12,18 @@ var UEnemy = enchant.Class.create(enchant.Sprite, {
             this.addEventListener('enterframe', function () {
                 this.y = this.y + 2;
             });
-        } else {
+        } else if (imagename == 'img/avatars/milan.jpg') {
+            this.direction = 1;
+            this.addEventListener('enterframe', function () {
+                if (Math.abs(orig_x - this.x) == 20) {
+                    this.direction = this.direction * -1;
+                }
+
+                this.y = this.y + 2;
+                this.x = this.x + 2*this.direction;
+            });
+        }
+        else {
             this.tl.moveBy(0, 320, 150);        // set movement
         }
 
