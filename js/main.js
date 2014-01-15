@@ -21,7 +21,7 @@ window.onload = function() {
     game.preload(possibleEnemies);
 
     // Sound assets
-    game.preload('sounds/laser.wav', 'sounds/shot5.wav', 'sounds/johnson-long-version.mp3');
+    game.preload('sounds/laser.wav', 'sounds/shot5.wav', 'sounds/johnson-long-version.mp3', 'sounds/se4.wav');
 
     // Styling
     game.fps = 60;

@@ -1,5 +1,7 @@
 var AEnemy = enchant.Class.create(enchant.Sprite, {
     initialize: function(){
+        this.hitcount = 0;
+
         enchant.Sprite.call(this, 32, 32);
         this.image = game.assets['img/a-32.png']; // set image
         var x = Math.min(284, Math.floor((Math.random() * 288) + 32));

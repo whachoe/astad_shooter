@@ -23,6 +23,14 @@ var Laser = enchant.Class.create(enchant.Sprite, {
                         game.enemiesOnScreen.removeChild(enemy);
                     } else if (enemy instanceof AEnemy) {
                         // This one just eats our bullets: A is Strong!
+                        enemy.hitcount++;
+                        if (enemy.hitcount == 3) {
+                            new Explosion(this.x, this.y);
+                            game.assets['sounds/se4.wav'].play();
+                            game.score += 500;
+                            game.amountOfEnemies -= 10; // Every time we shoot an enemy, we're going to make the next one come a teeny bit faster
+                            game.enemiesOnScreen.removeChild(enemy);
+                        }
                     }
 
                     this.remove();
