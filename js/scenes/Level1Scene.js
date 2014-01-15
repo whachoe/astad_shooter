@@ -6,6 +6,7 @@ var Level1Scene = enchant.Class.create(enchant.Scene, {
 
         game.enemiesOnScreen = new enchant.Group();
         game.score = 0;
+        game.amountOfEnemies = 8000; // with time, decrease this amount slowly so more enemies will appear
 
         // Initialize our ship
         game.ship = new Ship();
@@ -19,6 +20,27 @@ var Level1Scene = enchant.Class.create(enchant.Scene, {
         });
         this.addChild(scoreLabel);
 
+        this.addEventListener('enterframe', function() {
+            var enemy;
+
+            if (Math.random()*game.amountOfEnemies < 10) {
+                enemy = new AEnemy();
+                game.enemiesOnScreen.addChild(enemy);
+            }
+
+            if (Math.random()*game.amountOfEnemies < 50) {
+                enemy = new UEnemy();
+                game.enemiesOnScreen.addChild(enemy);
+            }
+
+            // If there's nothing happening on the screen: Spawn an enemy
+            if (game.enemiesOnScreen.childNodes.length == 0) {
+                enemy = new UEnemy();
+                game.enemiesOnScreen.addChild(enemy);
+            }
+        });
+
+        /*
         // generate enemy every 120 frames
         this.tl.then(function() {
             var enemy = new AEnemy();
@@ -30,7 +52,7 @@ var Level1Scene = enchant.Class.create(enchant.Scene, {
             var enemy = new UEnemy();
             game.enemiesOnScreen.addChild(enemy);
         }).delay(15).loop();
-
+*/
         this.addChild(game.enemiesOnScreen);
 
         // Setup our keyboard listeners

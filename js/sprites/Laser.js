@@ -19,6 +19,7 @@ var Laser = enchant.Class.create(enchant.Sprite, {
                     if (enemy instanceof UEnemy) {
                         new Explosion(this.x, this.y);
                         game.score += 100;
+                        game.amountOfEnemies -= 10; // Every time we shoot an enemy, we're going to make the next one come a teeny bit faster
                         game.enemiesOnScreen.removeChild(enemy);
                     } else if (enemy instanceof AEnemy) {
                         // This one just eats our bullets: A is Strong!
