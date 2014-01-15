@@ -1,5 +1,9 @@
 var Laser = enchant.Class.create(enchant.Sprite, {
     initialize: function(){
+
+        // Each hit takes 10 off our score: Accuracy gets promoted
+        if (game.score > 0) game.score = Math.max(0, game.score - 10);
+
         game.assets['sounds/laser.wav'].play();
         enchant.Sprite.call(this, 16, 16);
         this.image = game.assets['img/icon0.png'];
@@ -27,8 +31,9 @@ var Laser = enchant.Class.create(enchant.Sprite, {
                         if (enemy.hitcount == 3) {
                             new Explosion(this.x, this.y);
                             game.assets['sounds/se4.wav'].play();
-                            game.score += 500;
-                            game.amountOfEnemies -= 10; // Every time we shoot an enemy, we're going to make the next one come a teeny bit faster
+                            game.score += 1000;
+                            if (game.amountOfEnemies > 15)
+                                game.amountOfEnemies -= 15; // Every time we shoot an enemy, we're going to make the next one come a teeny bit faster
                             game.enemiesOnScreen.removeChild(enemy);
                         }
                     }

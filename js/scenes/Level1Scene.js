@@ -8,8 +8,11 @@ var Level1Scene = enchant.Class.create(enchant.Scene, {
         game.score = 0;
         game.amountOfEnemies = 8000; // with time, decrease this amount slowly so more enemies will appear
 
-        // Initialize our ship
-        game.ship = new Ship();
+        // DGame pad
+        var pad = new Pad();
+        pad.x = 0;
+        pad.y = 220;
+        game.rootScene.addChild(pad);
 
         // ScoreLabel
         var scoreLabel = new ScoreLabel(10, 10);
@@ -61,7 +64,8 @@ var Level1Scene = enchant.Class.create(enchant.Scene, {
         });
         // The rest of the keys get picked up in our Ship-Class down below
 
-        // Show our ship
+        // Initialize our ship
+        game.ship = new Ship();
         this.addChild(game.ship);
     }
 });
